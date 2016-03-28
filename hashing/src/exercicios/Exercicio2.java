@@ -106,11 +106,13 @@ public class Exercicio2 {
 		Random random = new Random();
 		Exercicio2 exercicio2 = new Exercicio2();
 		long[] posicoes = new long[1000];
+		long anterior = 0;
 		for (int i = 0; i < 1000; i++) {
 			filme.codigo = i;
 			filme.nome = "Filme "+i;
 			filme.nota = random.nextFloat();
-			posicoes[i] = exercicio2.salvarFime(filme);
+			posicoes[i] = anterior;
+			anterior = exercicio2.salvarFime(filme);
 		}
 
 		int[] buscas = new int[10];
@@ -131,7 +133,7 @@ public class Exercicio2 {
 		 tempoInicial = System.currentTimeMillis();
 		for (int i = 0; i < buscas.length; i++) {
 			System.out.println("Buscando chave "+buscas[i]);
-			System.out.println(exercicio2.lerFilme(posicoes[i]));
+			System.out.println(exercicio2.lerFilme(posicoes[buscas[i]]));
 		}
 		System.out.println("Tempo: "+(System.currentTimeMillis() - tempoInicial)+"ms");
 		
